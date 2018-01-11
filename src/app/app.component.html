@@ -3,9 +3,10 @@
 <div class = "col-lg-12"><h2>My List</h2></div>
 <div class="col-lg-12 my-list">
 <div class="card col-lg-4 my-list-item"  *ngFor="let listItem of myList;let i =index" (mouseover)="onMouseOver(i,'myList')" (mouseleave)="onMouseLeave('myList')">
-  <img class="card-img-top my-list-img" src="{{listItem.imgAlt}}" alt="Card image cap">
+  <img class="card-img-top my-list-img" [src]="listItem.img" [alt]="listItem.title">
   <div class="card-body">
-    <h4 class="card-title">{{listItem.title}}</h4>
+    <h4 class="card-title" *ngIf="!(showItem&&showIndex==i)">{{listItem.title}}</h4>
+    <div><input type="text" style="margin: 5px 0; width: 70%" class="form-control" *ngIf="showItem&&showIndex==i" [(ngModel)]="myList[i].title"></div>
 	<button type="button" *ngIf="showItem&&showIndex==i" class="btn btn-secondary"(click)="removeFromMyList(listItem,i)">Remove</button>
   </div>
 </div>
@@ -13,9 +14,10 @@
 <div class = "col-lg-12"><h2>Recommendations</h2></div>
 <div class="col-lg-12 my-list">
 <div class="card col-lg-4 my-list-item"  *ngFor="let recommendationItem of recommendationsList;let i =index" (mouseover)="onMouseOver(i,'recList')" (mouseleave)="onMouseLeave('recList')">
-  <img class="card-img-top my-list-img" src="{{recommendationItem.imgAlt}}" alt="Card image cap">
+  <img class="card-img-top my-list-img" [src]="recommendationItem.img" [alt]="recommendationItem.title">
   <div class="card-body">
-    <h4 class="card-title">{{recommendationItem.title}}</h4>
+    <h4 class="card-title" *ngIf="!(showItemRec&&showIndex==i)">{{recommendationItem.title}}</h4>
+    <div><input type="text" style="margin: 5px 0; width: 70%" class="form-control" *ngIf="showItemRec&&showIndex==i" [(ngModel)]="recommendationsList[i].title"></div>
 	<button type="button" *ngIf="showItemRec&&showIndex==i" class="btn btn-primary" (click)="addToMyList(recommendationItem)">Add</button>
   </div>
 </div>

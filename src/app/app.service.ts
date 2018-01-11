@@ -24,7 +24,7 @@ export class AppService {
 		}
 		
 		getMockData(){
-			return this.http.get('./data/mock-data.json')
+			return this.http.get('mock-data.json')
 			.catch((error: any) => this.handleError(error))
 			.map((res: Response) =>  res.json());
 			
