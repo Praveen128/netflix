@@ -1,0 +1,28 @@
+<div class="container">
+<h1>Watch Here</h1>
+<div class = "col-lg-12"><h2>My List</h2></div>
+<div class="col-lg-12 my-list">
+<div class="card col-lg-4 my-list-item"  *ngFor="let listItem of myList;let i =index" (mouseover)="onMouseOver(i,'myList')" (mouseleave)="onMouseLeave('myList')">
+  <img class="card-img-top my-list-img" src="{{listItem.imgAlt}}" alt="Card image cap">
+  <div class="card-body">
+    <h4 class="card-title">{{listItem.title}}</h4>
+	<button type="button" *ngIf="showItem&&showIndex==i" class="btn btn-secondary"(click)="removeFromMyList(listItem,i)">Remove</button>
+  </div>
+</div>
+</div>
+<div class = "col-lg-12"><h2>Recommendations</h2></div>
+<div class="col-lg-12 my-list">
+<div class="card col-lg-4 my-list-item"  *ngFor="let recommendationItem of recommendationsList;let i =index" (mouseover)="onMouseOver(i,'recList')" (mouseleave)="onMouseLeave('recList')">
+  <img class="card-img-top my-list-img" src="{{recommendationItem.imgAlt}}" alt="Card image cap">
+  <div class="card-body">
+    <h4 class="card-title">{{recommendationItem.title}}</h4>
+	<button type="button" *ngIf="showItemRec&&showIndex==i" class="btn btn-primary" (click)="addToMyList(recommendationItem)">Add</button>
+  </div>
+</div>
+</div>
+<div class="col-lg-12 bottom-links">
+<nav class="nav">
+  <a class="nav-link item-link" *ngFor="let listItem of myList" href="#">{{listItem.title}}</a>
+</nav>
+</div>
+</div>
